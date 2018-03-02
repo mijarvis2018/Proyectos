@@ -5,6 +5,8 @@ import sys, getopt
 from bs4 import BeautifulSoup
 from StringIO import StringIO
 import gzip
+from sleeper import sleeper #just for testing purposes
+
 
 def main(argv):
 
@@ -32,6 +34,7 @@ def main(argv):
 				#	look at length of paste_list prior to new element
 				length = len(paste_list)
 				paste_list.add(paste)
+				print 'QOOOOOOO'
 
 				#	If the length has increased the paste is unique since a set has no duplicate entries
 				if len(paste_list) > length:
@@ -44,11 +47,14 @@ def main(argv):
 
 					#	If keywords are not found enter time_out
 					time_out = True
+					print 'AOOOOOOO'
 
 			# Enter the timeout if no new pastes have been found
 			if time_out:
 				time.sleep(2)
+				print 'BOOOOOOO'
 
+			print 'COOOOOOO'
 			sys.stdout.write("\rCrawled total of %d Pastes, Keyword matches %d" % (len(paste_list), len(found_keywords)))
 			sys.stdout.flush()
 
@@ -90,6 +96,7 @@ def main(argv):
 
 
 def write_out(found_keywords, append, file_name):
+	print 'WOOOOOOO'
 	# 	if pastes with keywords have been found
 	if len(found_keywords):
 
@@ -106,6 +113,7 @@ def write_out(found_keywords, append, file_name):
 		print "\n\nNo relevant pastes found, exiting\n\n"
 
 def find_new_pastes(root_html):
+	print 'POOOOOOO'
 	new_pastes = []
 
 	div = root_html.find('div', {'id': 'menu_2'})
@@ -118,6 +126,7 @@ def find_new_pastes(root_html):
 	return new_pastes
 
 def find_keywords(raw_url, found_keywords, keywords):
+	print 'KOOOOOOO'
 	paste = fetch_page(raw_url)
 
 	#	Todo: Add in functionality to rank hit based on how many of the keywords it contains
@@ -129,6 +138,8 @@ def find_keywords(raw_url, found_keywords, keywords):
 	return found_keywords
 
 def fetch_page(page):
+	print 'FOOOOOOO'
+	sleeper(5)
 	response = urllib2.urlopen(page)
 	if response.info().get('Content-Encoding') == 'gzip':
 		response_buffer = StringIO(response.read())
@@ -138,12 +149,13 @@ def fetch_page(page):
 		return response.read()
 
 def initialize_options(argv):
+	print 'IOOOOOOO'
 	keywords 			= ['ssh', 'pass', 'key', 'token']
 	file_name 			= 'log.txt'
 	append 				= False
 	run_time 			= 0
 	match_total			= None
-	crawl_total	 		= 11
+	crawl_total	 		= 10
 
 	try:
 		opts, args = getopt.getopt(argv,"h:k:o:t:n:m:a")
@@ -158,17 +170,21 @@ def initialize_options(argv):
 			sys.exit()
 		elif opt == '-a':
 			append = True
+			print 'append detected'
 		elif opt == "-k":
 			keywords = set(arg.split(","))
 		elif opt == "-o":
+			print ('Filename: %s' % arg)
 			file_name = arg
 		elif opt == "-t":
+			print 'Time detected'
 			try:
 				run_time = int(arg)
 			except ValueError:
 				print "Time must be an integer representation of seconds."
 				sys.exit()
 		elif opt == '-m':
+			print 'match detected'
 			try:
 				match_total = int(arg)
 			except ValueError:
@@ -176,6 +192,7 @@ def initialize_options(argv):
 				sys.exit()
 
 		elif opt == '-n':
+			print 'Crawl detected'
 			try:
 				crawl_total = int(arg)
 			except ValueError:
@@ -185,4 +202,4 @@ def initialize_options(argv):
 	return file_name, keywords, append, run_time, match_total, crawl_total
 
 if __name__ == "__main__":
-main(sys.argv[1:])
+	main(sys.argv[1:])

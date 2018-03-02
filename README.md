@@ -1,2 +1,2 @@
 # Proyectos
-Proyectos varios
+Proyectos varios relacionados con la programación
