@@ -153,7 +153,7 @@ def initialize_options(argv):
 	keywords 			= ['ssh', 'pass', 'key', 'token']
 	file_name 			= 'log.txt'
 	append 				= False
-	run_time 			= 0
+	run_time 			= 10
 	match_total			= None
 	crawl_total	 		= 10
 
