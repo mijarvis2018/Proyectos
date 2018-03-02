@@ -810,6 +810,7 @@ class CmdInterpreter(Cmd):
 
     def do_wiki(self, s):
         """Jarvis will get wiki details for you"""
+        #ERROR if only uses wiki or wiki search without keyword
         k = s.split(' ', 1)
         data = None
         if k[0] == "search":
@@ -823,6 +824,7 @@ class CmdInterpreter(Cmd):
             print("\nDid you mean one of these pages?\n")
             for d in range(len(data)):
                 print(str(d + 1) + ": " + data[d])
+                # Jarvis don't let to choose over these results
         else:
             print("\n" + data)
 
