@@ -30,21 +30,21 @@ try:
             texto_tweets = str(row)
             numtext = len(str(row))
             print('Total caracteres= %d' % numtext)
-        for i in range(numtext):
-            if texto_tweets[i] == '"':
-#                print('\n')
-#                print(texto_pantalla)
-                try:
-                    with open(output_filename, 'a', newline='') as tweeteo:
-                        tweeteo.write('\n %s' % str(texto_pantalla))
-                        tweeteo.close()
-                except FileNotFoundError:
-                    with open(output_filename, 'w', newline='') as tweeteo:
-                        tweeteo.write('\n %s' % str(texto_pantalla))
-                        tweeteo.close()
-                texto_pantalla = ''
-            else:
-                texto_pantalla += texto_tweets[i]
+            for i in range(numtext):
+                if texto_tweets[i] == '"':
+#                    print('\n')
+                    print(texto_pantalla)
+                    try:
+                        with open(output_filename, 'a', newline='') as tweeteo:
+                            tweeteo.write('\n %s' % str(texto_pantalla))
+                            tweeteo.close()
+                    except FileNotFoundError:
+                        with open(output_filename, 'w', newline='') as tweeteo:
+                            tweeteo.write('\n %s' % str(texto_pantalla))
+                            tweeteo.close()
+                    texto_pantalla = ''
+                else:
+                    texto_pantalla += texto_tweets[i]
 
 
 

@@ -69,7 +69,7 @@ for day in range(days):
             text_f = '\n ' + tweet.find_element_by_css_selector(text_selector_f).text
             try:
                 with open(extralogfile, 'a') as outfile:
-                    json.dumps('\n', outfile, ensure_ascii=True, indent=2)
+                    outfile.write('\n')
                     json.dump(text_f, outfile, ensure_ascii=True, indent=2)
             except FileNotFoundError:
                     with open(extralogfile, 'w') as outfile:
