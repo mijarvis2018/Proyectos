@@ -10,7 +10,9 @@ import datetime
 
 texto_tweets = 'default'
 texto_pantalla = ''
-filename = 'extra.log'
+filename = 'extra.json'
+output_filename = 'tweets.txt'
+
 # delimiter = "\t"
 delimiter = '\n'
 quotechar= '"'
@@ -26,19 +28,20 @@ try:
 
         for row in reader:
             texto_tweets = str(row)
-
-            print ('\nROW\n')
             numtext = len(str(row))
-#            print('" '.join(row))
-            print('Numtext= %d' % numtext)
-            print(reader.line_num)
-            print('\n End of rows')
-
+            print('Total caracteres= %d' % numtext)
         for i in range(numtext):
-
             if texto_tweets[i] == '"':
-                print('\n')
-                print(texto_pantalla)
+#                print('\n')
+#                print(texto_pantalla)
+                try:
+                    with open(output_filename, 'a', newline='') as tweeteo:
+                        tweeteo.write('\n %s' % str(texto_pantalla))
+                        tweeteo.close()
+                except FileNotFoundError:
+                    with open(output_filename, 'w', newline='') as tweeteo:
+                        tweeteo.write('\n %s' % str(texto_pantalla))
+                        tweeteo.close()
                 texto_pantalla = ''
             else:
                 texto_pantalla += texto_tweets[i]

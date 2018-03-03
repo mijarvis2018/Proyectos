@@ -16,7 +16,7 @@ delay = 1  # time to wait on each page load before reading the page
 driver = webdriver.Chrome()  # options are Chrome() Firefox() Safari()
 
 # extra log
-extralogfile = 'extra.log'
+extralogfile = 'extra.json'
 text_selector_f = 'p.tweet-text'
 text_f ='default'
 
