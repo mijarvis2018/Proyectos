@@ -8,8 +8,8 @@ import datetime
 
 # edit these three variables
 user = 'NTMEP'
-start = datetime.datetime(2018, 2, 25)  # year, month, day
-end = datetime.datetime(2018, 3, 3)  # year, month, day
+start = datetime.datetime(2018, 3, 1)  # year, month, day
+end = datetime.datetime(2018, 3, 4)  # year, month, day
 
 # only edit these if you're having problems
 delay = 1  # time to wait on each page load before reading the page
@@ -66,11 +66,11 @@ for day in range(days):
 
         for tweet in found_tweets:
             # Added extralogfile  for all the text on the tweets
-            text_f = '\n ' + tweet.find_element_by_css_selector(text_selector_f).text
+            text_f = tweet.find_element_by_css_selector(text_selector_f).text
             try:
                 with open(extralogfile, 'a') as outfile:
                     outfile.write('\n')
-                    json.dump(text_f, outfile, ensure_ascii=True, indent=2)
+                    json.dump(text_f, outfile, ensure_ascii=False)
             except FileNotFoundError:
                     with open(extralogfile, 'w') as outfile:
                         json.dump(text_f , outfile)
