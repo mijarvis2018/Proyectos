@@ -14,4 +14,4 @@ Crear un entorno virtual:
 
 y activarlo:
 
-              source $HOME/tmp/virtualvenv/
+              source $HOME/tmp/virtualvenv/bin/activate

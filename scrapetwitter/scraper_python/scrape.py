@@ -7,12 +7,12 @@ import datetime
 
 
 # edit these three variables
-user = 'NTMEP'
+user = 'User to query'
 start = datetime.datetime(2018, 3, 1)  # year, month, day
-end = datetime.datetime(2018, 3, 4)  # year, month, day
+end = datetime.datetime(2018, 3, 5)  # year, month, day
 
 # only edit these if you're having problems
-delay = 1  # time to wait on each page load before reading the page
+delay = 2  # time to wait on each page load before reading the page
 driver = webdriver.Chrome()  # options are Chrome() Firefox() Safari()
 
 # extra log
