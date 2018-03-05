@@ -1,0 +1,21 @@
+Username:
+
+<input type="text"
+class="StaticLoggedOutHomePage-input text-input email-input"
+autocomplete="off"
+name="user[email]"
+placeholder="Phone or email">
+
+Password:
+
+<input type="password" 
+class="StaticLoggedOutHomePage-input text-input"
+name="user[user_password]"
+placeholder="Password">
+
+Login Button:
+
+<button type="button"
+class="EdgeButton EdgeButton--medium EdgeButton--primary StaticLoggedOutHomePage-getStartedButton">
+              Get started
+            </button>
